@@ -23,14 +23,14 @@ const LogoTicker = () => {
           }}
         >
           <motion.div
-            className="flex gap-14 flex-none pr-14"
             animate={{ translateX: "-50%" }}
             transition={{
-              duration: 20,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop",
+              duration: 20,
             }}
+            className="flex gap-14 flex-none pr-14"
           >
             <Image
               className="logo-ticker-image"

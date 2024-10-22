@@ -16,7 +16,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "custom-gradient":
-          "linear-gradient(to right, #dd7ddf, #e1cd86, #bbcb92, #71c2ef, #3bffff, #dd7ddf)",
+          "linear-gradient(to right, #dd7ddf, #e1cd86, #bbcb92, #71c2ef, #3bffff, #dd7ddf,#e1cd86, #bbcb92, #71c2ef, #3bffff)",
         "logo-bg-gradient":
           "linear-gradient(to right, #f87bff, #fb92cf, #ffdd9b, #c2f0b1, #2fd8fe)",
       },
