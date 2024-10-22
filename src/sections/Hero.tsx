@@ -1,12 +1,29 @@
+"use client";
+
 import ArrowIcon from "@/assets/arrow-right.svg";
 import cogImage from "@/assets/cog.png";
 import Image from "next/image";
 import cylinderImage from "@/assets/cylinder.png";
 import noodleImage from "@/assets/noodle.png";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
+import { useRef } from "react";
 
 const Hero = () => {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start end", "end start"],
+  });
+  const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
   return (
     <section
+      ref={heroRef}
       className="pt-8 pb-20 md:pt-5 md:pb-10 overflow-x-clip"
       style={{
         background:
@@ -36,22 +53,33 @@ const Hero = () => {
           </div>
 
           <div className="mt-20 md:mt-0 md:h-[648px] md:flex-1 relative">
-            <Image
+            <motion.img
               className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-0"
-              src={cogImage}
+              src={cogImage.src}
               alt="Cog image"
+              animate={{
+                translateY: [-30, 30],
+              }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "mirror",
+                duration: 3,
+                ease: "easeInOut",
+              }}
             />
-            <Image
+            <motion.img
               className="hidden md:block -top-8 -left-32 absolute"
-              src={cylinderImage}
+              src={cylinderImage.src}
               width={220}
               height={220}
               alt="Cylinder image"
+              style={{ translateY: translateY }}
             />
-            <Image
-              src={noodleImage}
+            <motion.img
+              style={{ translateY: translateY, rotate: "30deg" }}
+              src={noodleImage.src}
               width={220}
-              className="hidden lg:block absolute top-[524px] left-[448px] rotate-[30deg]"
+              className="hidden lg:block absolute top-[524px] left-[448px]"
               alt="Noodle image"
             />
           </div>
